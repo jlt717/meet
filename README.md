@@ -16,7 +16,7 @@ Given the user was typing “Berlin” in the city textbox and the list of sugge
 ## Feature 2: Show/hide an event's details
 ### User Story: As a user, I would like to be able to reveal and hide event details so that I can find events that are the most applicable to me. 
 ### Scenario 1: An event element is collapsed by default
-Given the user has slected a location to search for events, when the list of local events for that location loads then the event elements will collapse.
+Given the user has selected a location to search for events, when the list of local events for that location loads then the event elements will collapse.
 ### Scenario 2: User can expand an event to see its details
 Given the list of events has loaded, when the user clicks on "show details" then the event element will expand to show more details about the event.
 ### Scenario 3: User can collapse an event to hide its details
@@ -34,16 +34,16 @@ Given the user is unhappy with the amount of events being shown at a time, when 
 ### Scenario 1: Show cached data when there’s no internet connection
 Given there is no internet connection, when the user tries to access details of a previously viewed event in their area then cached data will appear.
 ### Scenario 2: Show error when user changes the settings (city, time range)
-Given there is no interent connection, when the user tries to make changes in their settings then they will receive an error message.
+Given there is no internet connection, when the user tries to make changes in their settings then they will receive an error message.
 
 ## Feature 5: Data visualization
 ### User Story: As a user, I would like to be able to see a chart showing the upcoming events in each city so that I know what events are organized in which city.
 ### Scenario 1: Show a chart with the number of upcoming events in each city
-Given a specific city has not selected to search for events, when the user wants to browse events in multiple locations then a chart with upcoming events by city will appear.
+Given a specific city has not been selected to search for events, when the user wants to browse events in multiple locations then a chart with upcoming events by city will appear.
 
 ## How I plan to use serverless functions:
 
-### I'll use serverless functions to authenticate and authorize users with an access key before allowing them access to features of the app. I will also use these functions to filter search for cities, hide and show details pertaining to events of interest, show a particular number of events at a time, and to fetch date from the Google Calendar API. In addition, I will use them to show cached data and error messages as appropriate depending upon a user's use of the app while offline.
+### I'll use serverless functions to authenticate and authorize users with an access key before allowing them access to features of the app. I will also use these functions to filter search for cities, hide and show details pertaining to events of interest, show a particular number of events at a time, and to fetch data from the Google Calendar API. In addition, I will use them to show cached data and error messages as appropriate depending upon a user's use of the app while offline.
 
 ## Author
 Jamie Tracy
