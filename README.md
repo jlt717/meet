@@ -30,7 +30,7 @@ Given the user has not specified a number of events to be listed at a time, when
 Given the user is unhappy with the amount of events being shown at a time, when they adjust the number of events shown then the list length will either increase or decrease based on user preference.
 
 ## Feature 4: Use the app while offline
-### User Story: As a user, I would like to be able to access this app without internet access so that I can still have access to events I've prebiously viewed.
+### User Story: As a user, I would like to be able to access this app without internet access so that I can still have access to events I've previously viewed.
 ### Scenario 1: Show cached data when there’s no internet connection
 Given there is no internet connection, when the user tries to access details of a previously viewed event in their area then cached data will appear.
 ### Scenario 2: Show error when user changes the settings (city, time range)
@@ -40,6 +40,10 @@ Given there is no interent connection, when the user tries to make changes in th
 ### User Story: As a user, I would like to be able to see a chart showing the upcoming events in each city so that I know what events are organized in which city.
 ### Scenario 1: Show a chart with the number of upcoming events in each city
 Given a specific city has not selected to search for events, when the user wants to browse events in multiple locations then a chart with upcoming events by city will appear.
+
+## How I plan to use serverless functions:
+
+### I'll use serverless functions to authenticate and authorize users with an access key before allowing them access to features of the app. I will also use these functions to filter search for cities, hide and show details pertaining to events of interest, show a particular number of events at a time, and to fetch date from the Google Calendar API. In addition, I will use them to show cached data and error messages as appropriate depending upon a user's use of the app while offline.
 
 ## Author
 Jamie Tracy
