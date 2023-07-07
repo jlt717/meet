@@ -1,26 +1,22 @@
 // src/components/Event.js
 import { useState } from "react";
 
-const Event = ({allEvents}) => {
-        // const [showEventDetails, setShowEventDetails] = useState(false);
-        // const [eventDetails, setEventDetails] = useState([]);
-        // const handleInputChanged = (event) => {
-        //   const value = event.target.value;
-        //   const filteredLocations = allLocations
-        //     ? allLocations.filter((location) => {
-        //         return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
-        //       })
-        //     : [];
-      
-        //   setQuery(value);
-        //   setSuggestions(filteredLocations);
-        // };
-        // const handleItemClicked = (event) => {
-        //   const value = event.target.textContent;
-        //   setQuery(value);
-        //   setShowEventDetails(false); // to hide the list
-        // };
-  return <li></li>;
+const Event = ({ event }) => {
+  const [showDetails, setShowDetails] = useState(false);
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
+  return (
+    <div className="event">
+      <div className="location">{event.location} </div>
+      <div className="dateTime">{event.start.dateTime}</div>
+      {!showDetails && <div className="summary">{event.summary}</div>}
+      <button class="details-btn" onClick={toggleDetails}>
+        {showDetails ? "hide details" : "show details"}
+      </button>
+      {showDetails && <div className="details">details</div>}
+    </div>
+  );
 };
 
 export default Event;

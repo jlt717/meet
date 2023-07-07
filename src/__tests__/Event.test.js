@@ -4,8 +4,8 @@ import userEvent from "@testing-library/user-event";
 import { getEvents } from "../api";
 
 describe("<Event /> component", () => {
-    let EventComponent;
-    const event = {}
+  let EventComponent;
+  const allEvents = await getEvents();
   beforeEach(() => {
     EventComponent = render(<Event event={allEvents[0]} />);
   });
@@ -25,7 +25,7 @@ describe("<Event /> component", () => {
     ).toBeInTheDocument();
   });
   test("renders event details button with the title (show details)", () => {
-    expect(EventComponent.queryByText("show details")).toBeInTheDocument();
+    expect(EventComponent.queryByRole("#details-btn")).toBeInTheDocument();
   });
   test("by default, event's details section should be hidden", () => {
     const eventDetails = EventComponent.queryByText("details");
@@ -33,7 +33,7 @@ describe("<Event /> component", () => {
   });
   test("shows the details section when the user clicks on the 'show details' button", async () => {
     const user = userEvent.setup();
-    const showDetailsButton = EventComponent.queryByRole("button");
+    const showDetailsButton = EventComponent.queryByRole("details-btn");
     await user.click(showDetailsButton);
     const eventDetails = EventComponent.description("details");
     expect(eventDetails).toBeInTheDocument();
