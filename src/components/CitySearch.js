@@ -32,7 +32,7 @@ const CitySearch = ({ allLocations }) => {
         onFocus={() => setShowSuggestions(true)}
         onChange={handleInputChanged}
       />
-      {showSuggestions ? (
+      {showSuggestions && query.length !== 0 ? (
         <ul className="suggestions">
           {suggestions.map((suggestion) => {
             return (

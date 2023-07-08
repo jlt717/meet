@@ -46,6 +46,7 @@ describe("<CitySearch /> component", () => {
             location.toUpperCase().indexOf(cityTextBox.value.toUpperCase()) > -1
           );
         })
+       ?
       : [];
 
     // get all <li> elements inside the suggestion list

@@ -7,15 +7,17 @@ const Event = ({ event }) => {
     setShowDetails(!showDetails);
   };
   return (
-    <div className="event">
-      <div className="location">{event.location} </div>
-      <div className="dateTime">{event.start.dateTime}</div>
-      {!showDetails && <div className="summary">{event.summary}</div>}
-      <button class="details-btn" onClick={toggleDetails}>
-        {showDetails ? "hide details" : "show details"}
-      </button>
-      {showDetails && <div className="details">details</div>}
-    </div>
+    <li>
+      <div className="event">
+        <div className="location">{event.location} </div>
+        <div className="dateTime">{event.start.dateTime}</div>
+        {!showDetails && <div className="description">{event.description}</div>}
+        <button className="details-btn" onClick={toggleDetails}>
+          {showDetails ? "hide details" : "show details"} Show Details
+        </button>
+        {showDetails && <div className="details">details</div>}
+      </div>
+    </li>
   );
 };
 
