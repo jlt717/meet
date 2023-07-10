@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Event from "../components/Event";
-import userEvent from "@testing-library/user-event";
+//import userEvent from "@testing-library/user-event";
 
 const event = {
   kind: "calendar#event",
@@ -70,7 +70,7 @@ describe("<Event /> component", () => {
   // });
   test("shows and hides details section when the user toggles display button", () => {
     render(<Event event={event} />);
-    const showDetailsButton = screen.queryByText("Show Details");
+    const showDetailsButton = screen.getByText("Show Details");
     fireEvent.click(showDetailsButton);
     expect(
       screen.getByText(/Have you wondered how you can ask Google/)

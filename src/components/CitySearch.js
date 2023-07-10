@@ -23,7 +23,7 @@ const CitySearch = ({ allLocations }) => {
     setShowSuggestions(false); // to hide the list
   };
   return (
-    <div id="city-search" data-testid="suggestions">
+    <div id="city-search">
       <input
         type="text"
         className="city"
@@ -33,7 +33,7 @@ const CitySearch = ({ allLocations }) => {
         onChange={handleInputChanged}
       />
       {showSuggestions && query.length !== 0 ? (
-        <ul className="suggestions">
+        <ul className="suggestions" data-testid="suggestions">
           {suggestions.map((suggestion) => {
             return (
               <li onClick={handleItemClicked} key={suggestion}>

@@ -1,6 +1,6 @@
 // src/api.js
 
-import mockData from './mock-data';
+import mockData from "./mock-data";
 
 /**
  *
@@ -11,7 +11,7 @@ import mockData from './mock-data';
  * The Set will remove all duplicates from the array.
  */
 export const extractLocations = (events) => {
-  console.log('Events:', events);
+  //console.log('Events:', events);
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
   return locations;

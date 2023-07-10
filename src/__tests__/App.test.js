@@ -1,6 +1,6 @@
 // src/__tests__/App.test.js
 
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import App from "../App";
 
 describe("<App /> component", () => {
@@ -12,12 +12,11 @@ describe("<App /> component", () => {
   });
 });
 
-  // test("render CitySearch", () => {
-  //   render(<App />);
-  //   const input = screen.getByRole()
-  //   expect(screen.querySelector("#city-search")).toBeInTheDocument();
-  // });
-//});
+test("render CitySearch", () => {
+  render(<App />);
+  const input = screen.getByPlaceholderText("Search for a city");
+  fireEvent.change(input, { value: "London" });
+});
 
 // describe("<App /> component", () => {
 //   test("renders list of events", () => {

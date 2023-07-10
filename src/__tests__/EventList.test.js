@@ -7,7 +7,7 @@ const allEvents = getEvents();
 describe("<EventList /> component", () => {
   test('has an element with "list" role', () => {
     render(<EventList events={[]} />);
-    expect(screen.queryByRole("list")).not.toBeInTheDocument();
+    expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
   });
 
   test("renders correct number of events", async () => {

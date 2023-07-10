@@ -23,7 +23,7 @@ describe("<CitySearch /> component", () => {
     render(<CitySearch />);
     const cityTextBox = screen.getByPlaceholderText("Search for a city");
     await userEvent.type(cityTextBox, "a");
-    const suggestionItem = screen.queryByRole("list");
+    const suggestionItem = screen.queryByRole("listitem");
     expect(suggestionItem).toBeInTheDocument();
     const suggestionList = screen.queryByTestId("suggestions");
     expect(suggestionList).toHaveClass("suggestions");
