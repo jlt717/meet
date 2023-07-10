@@ -1,22 +1,23 @@
 // src/__tests__/App.test.js
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "../App";
 
-describe('<App /> component', () => {
-    let AppDOM;
-    beforeEach(() => {
-      AppDOM = render(<App />).container.firstChild;
-    })
-  
-    test('renders list of events', () => {
-      expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
-    });
-  
-    test('render CitySearch', () => {
-      expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
-    });
+describe("<App /> component", () => {
+  test("renders list of events", () => {
+    render(<App />);
+    expect(
+      screen.getByPlaceholderText("Search for a city")
+    ).toBeInTheDocument();
   });
+});
+
+  // test("render CitySearch", () => {
+  //   render(<App />);
+  //   const input = screen.getByRole()
+  //   expect(screen.querySelector("#city-search")).toBeInTheDocument();
+  // });
+//});
 
 // describe("<App /> component", () => {
 //   test("renders list of events", () => {

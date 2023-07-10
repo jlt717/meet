@@ -23,7 +23,7 @@ const CitySearch = ({ allLocations }) => {
     setShowSuggestions(false); // to hide the list
   };
   return (
-    <div id="city-search">
+    <div id="city-search" data-testid="suggestions">
       <input
         type="text"
         className="city"
