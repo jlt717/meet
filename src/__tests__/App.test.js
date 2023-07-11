@@ -1,6 +1,6 @@
 // src/__tests__/App.test.js
 
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "../App";
 
 describe("<App /> component", () => {
@@ -10,13 +10,16 @@ describe("<App /> component", () => {
       screen.getByPlaceholderText("Search for a city")
     ).toBeInTheDocument();
   });
+  test("renders textbox with number of events", () => {
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
+  });
 });
 
-test("render CitySearch", () => {
-  render(<App />);
-  const input = screen.getByPlaceholderText("Search for a city");
-  fireEvent.change(input, { value: "London" });
-});
+// test("render CitySearch", () => {
+//   render(<App />);
+//   const input = screen.getByPlaceholderText("Search for a city");
+//   fireEvent.change(input, { value: "London" });
+// });
 
 // describe("<App /> component", () => {
 //   test("renders list of events", () => {

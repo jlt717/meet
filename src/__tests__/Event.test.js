@@ -68,7 +68,7 @@ describe("<Event /> component", () => {
   //   const eventDetails = screen.queryByText("description");
   //   expect(eventDetails).not.toBeInTheDocument();
   // });
-  test("shows and hides details section when the user toggles display button", () => {
+  test("shows and hides details section when the user toggles button", () => {
     render(<Event event={event} />);
     const showDetailsButton = screen.getByText("Show Details");
     fireEvent.click(showDetailsButton);
