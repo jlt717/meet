@@ -1,20 +1,22 @@
 // src/components/NumberOfEvents.js
 
-import { useState } from "react";
-import EventList from "./EventList";
+import React, { useState } from "react";
 
-const NumberOfEvents = ({}) => {
-  const [query, setQuery] = useState(32);
+const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
+  const [query, setQuery] = useState(eventNumber);
+
   const handleInputChanged = (event) => {
     const value = event.target.value;
     setQuery(value);
+    onEventNumberChange(value);
   };
 
   return (
     <div id="number-of-events">
       <input
-        type="number"
-        className="number-box"
+        type="text"
+        className="textbox"
+        placeholder="Enter a number"
         value={query}
         onChange={handleInputChanged}
       />

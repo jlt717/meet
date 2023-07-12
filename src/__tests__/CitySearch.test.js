@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CitySearch from "../components/CitySearch";
 import { extractLocations } from "../api";
-//import { extractLocations, getEvents } from "./api";
+
 const eventsList = [  {
   kind: "calendar#event",
   etag: '"3181159875584000"',
