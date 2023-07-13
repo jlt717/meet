@@ -11,7 +11,8 @@ describe("<App /> component", () => {
     ).toBeInTheDocument();
   });
   test("renders textbox with number of events", () => {
-    expect(screen.getByRole("textbox")).toBeInTheDocument();
+    render (<App />);
+    expect(screen.getByPlaceholderText("Enter a number")).toBeInTheDocument();
   });
 });
 

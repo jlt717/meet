@@ -1,15 +1,12 @@
 // src/components/NumberOfEvents.js
 
-import React, { useState } from "react";
+import React from "react";
 
 const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
-  const [query, setQuery] = useState(eventNumber);
-
-  const handleInputChanged = (event) => {
-    const value = event.target.value;
-    setQuery(value);
+  const handleInputChanged = (value) => {
     onEventNumberChange(value);
   };
+  console.log(eventNumber);
 
   return (
     <div id="number-of-events">
@@ -17,8 +14,8 @@ const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
         type="text"
         className="textbox"
         placeholder="Enter a number"
-        value={query}
-        onChange={handleInputChanged}
+        value={eventNumber}
+        onChange={(e) => handleInputChanged(e.target.value)}
       />
     </div>
   );
