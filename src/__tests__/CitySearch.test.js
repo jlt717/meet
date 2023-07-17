@@ -1,9 +1,10 @@
 // src/__tests__/CitySearch.test.js
 
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CitySearch from "../components/CitySearch";
 import { extractLocations, getEvents } from "../api";
+import App from "../App";
 
 const eventsList = [
   {
@@ -142,7 +143,7 @@ test("renders the suggestion text in the textbox upon clicking on the suggestion
   const user = userEvent.setup();
   const allEvents = await getEvents();
   const allLocations = extractLocations(allEvents);
-  render(<CitySearch allLocations={allLocations} />);
+  render(<CitySearch allLocations={allLocations} setCurrentCity={() => {}} />);
 
   const cityTextBox = screen.queryByRole("textbox");
   await user.type(cityTextBox, "Berlin");
@@ -153,4 +154,32 @@ test("renders the suggestion text in the textbox upon clicking on the suggestion
   await user.click(BerlinGermanySuggestion);
 
   expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
+});
+describe("<CitySearch /> integration", () => {
+  test("renders suggestions list when the app is rendered.", async () => {
+    const user = userEvent.setup();
+    render (<App />);
+    
+    const citySearch = screen.getByTestId("city-search");
+    const cityTextBox = within(citySearch).getByRole("textbox");
+    await user.click(cityTextBox);
+
+    const allEvents = await getEvents();
+    const allLocations = extractLocations(allEvents);
+
+    console.log(citySearch.innerHTML);
+    //console.log('cityTextBox:', cityTextBox);
+    //console.log('allLocations:', allLocations);
+  
+
+    // const CitySearchDOM = AppDOM.querySelector('#city-search');
+    // const cityTextBox = within(CitySearchDOM).queryByRole('textbox');
+    // await user.click(cityTextBox);
+
+    //const allEvents = await getEvents();
+    //const allLocations = extractLocations(allEvents);
+
+    const suggestionListItems = within(citySearch).queryAllByRole("listitem");
+    expect(suggestionListItems.length).toBe(allLocations.length + 1);
+  });
 });
