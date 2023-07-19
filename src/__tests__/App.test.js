@@ -3,7 +3,7 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
-import { getEvents } from "../api";
+//import { getEvents } from "../api";
 
 describe("<App /> component", () => {
   test("renders list of events", () => {
@@ -19,16 +19,40 @@ describe("<App /> component", () => {
   describe("<App /> integration", () => {});
   test("renders a list of events matching the city selected by the user", async () => {
     render(<App />);
-    //const AppDOM = AppComponent.container.firstChild;
+
+//     const citySearch = screen.getByTestId("city-search");
+//     const citySearchInput = within(citySearch).getByRole("textbox");
+
+//     await userEvent.type(citySearchInput, "Berlin");
+//     const berlinSuggestionItem = within(citySearch).getByText("Berlin, Germany");
+//     await userEvent.click(berlinSuggestionItem);
+
+//     const eventList = screen.getByTestId("event-list");
+//     const eventItems = within(eventList).getAllByRole("listitem");
+
+//     const allEvents = await getEvents();
+//     const berlinEvents = allEvents.filter((event) => event.location === "Berlin, Germany");
+
+//     expect(eventItems.length).toBe(berlinEvents.length);
+
+//     eventItems.forEach((event) => {
+//       expect(event).toHaveTextContent("Berlin, Germany");
+//     });
+//   });
+// });
+
+
     const citySearchInput = screen.getByPlaceholderText("Search for a city");
     await userEvent.type(citySearchInput, "Berlin");
     const berlinSuggestionItems = screen.getAllByText("Berlin, Germany");
     const berlinSuggestionItem = berlinSuggestionItems[0];
     await userEvent.click(berlinSuggestionItem);
     const eventList = screen.getByTestId("event-list");
-    within(eventList).queryAllByRole("listitem");
-   // expect(eventItems.length).toBeGreaterThan(0);
-   // expect(eventItems[0]).toHaveTextContent("Berlin, Germany");
+    const eventItems = within(eventList).queryAllByRole("listitem");
+    expect(eventList).toBeInTheDocument();
+    expect(eventItems.length).toBeGreaterThan(0);
+    expect(eventItems[0]).toHaveTextContent("Berlin, Germany");
+    
     // const CitySearchDOM = AppDOM.querySelector("#city-search");
     //     const CitySearchInput = within(CitySearchDOM).queryByRole("textbox");
 
@@ -46,10 +70,9 @@ describe("<App /> component", () => {
     //   (event) => event.location === "Berlin, Germany"
     // );
 
-    // 
-    });
+    //
   });
-
+});
 
 // test("render CitySearch", () => {
 //   render(<App />);
@@ -66,4 +89,4 @@ describe("<App /> component", () => {
 //     const AppDOM = render().container.firstChild;
 //     expect(AppDOM.querySelector("#city-search")).toBeInTheDocument();
 //   });
-// });
+
