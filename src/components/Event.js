@@ -9,9 +9,10 @@ const Event = ({ event }) => {
   return (
     <li>
       <div className="event">
+      <h2>{event.summary}</h2>
+        {/* <div className="name">{event.summary}</div> */}
         <div className="location">{event.location} </div>
         <div className="dateTime">{event.start.dateTime}</div>
-        <div className="name">{event.summary}</div>
         {showDetails && <div className="description">{event.description}</div>}
         <button className="details-btn" onClick={toggleDetails}>
           {showDetails ? "Hide Details" : "Show Details"}

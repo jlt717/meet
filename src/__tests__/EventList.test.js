@@ -99,13 +99,12 @@ describe("<EventList /> component", () => {
     render(<EventList events={allEvents} />);
     expect(screen.getAllByRole("listitem")).toHaveLength(allEvents.length);
   });
-  describe('<EventList /> integration', () => {
-    test('renders a list of 32 events when the app is mounted and rendered', async () => {
-      const AppComponent = render(<App />);
-      const AppDOM = AppComponent.container.firstChild;
-      const EventListDOM = AppDOM.querySelector('#event-list');
+  describe("<EventList /> integration", () => {
+    test("renders a list of events when the app is rendered", async () => {
+      render(<App />);
       await waitFor(() => {
-        const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+        const eventList = screen.queryByTestId("event-list");
+        const EventListItems = within(eventList).queryAllByRole("listitem");
         expect(EventListItems.length).toBeGreaterThan(0);
       });
     });

@@ -12,14 +12,22 @@ const App = () => {
   const [eventNumber, setEventNumber] = useState(32);
 
   useEffect(() => {
-    const getAllEvents = async () => {
+    const fetchData = async () => {
       const eventList = await getEvents();
       setEvents(eventList.slice(0, eventNumber));
       setAllLocations(extractLocations(eventList));
     };
-
-    getAllEvents();
+    fetchData();
   }, [eventNumber]);
+  // useEffect(() => {
+  //   const getAllEvents = async () => {
+  //     const eventList = await getEvents();
+  //     setEvents(eventList.slice(0, eventNumber));
+  //     setAllLocations(extractLocations(eventList));
+  //   };
+
+  //   getAllEvents();
+  // }, [eventNumber]);
 
   const handleCitySelected = (city) => {
     setSelectedCity(city);
@@ -74,7 +82,7 @@ const App = () => {
   //   setEventNumber(value);
   // };
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: "#f04908" }}>
       <CitySearch
         allLocations={allLocations}
         setSelectedCity={handleCitySelected}

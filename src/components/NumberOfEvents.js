@@ -4,12 +4,16 @@ import React from "react";
 
 const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
   const handleInputChanged = (value) => {
-    onEventNumberChange(value);
+    const numberValue = parseInt(value, 32); // Convert the input value to a number
+    if (!isNaN(numberValue)) {
+      onEventNumberChange(numberValue);
+    } else {
+      onEventNumberChange(0);
+    }
   };
-  //console.log(eventNumber);
 
   return (
-    <div id="number-of-events">
+    <div data-testid="number-of-events">
       <input
         type="text"
         className="textbox"
