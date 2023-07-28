@@ -182,10 +182,11 @@ describe("<CitySearch /> integration", () => {
     userEvent.type(cityInput, "Berlin");
 
     const suggestionList = await screen.findByTestId("suggestions");
-    const suggestionListItems = within(suggestionList).queryAllByRole("listitem");
+    const suggestionListItems =
+      within(suggestionList).queryAllByRole("listitem");
 
-    console.log("allLocations:", allLocations);
-    console.log("suggestionListItems:", suggestionListItems.length);
+    //console.log("allLocations:", allLocations);
+    //console.log("suggestionListItems:", suggestionListItems.length);
 
     expect(suggestionListItems.length + 1).toBe(allLocations.length + 1);
   });
@@ -216,8 +217,8 @@ describe("<CitySearch /> integration", () => {
 //     const citySearch = screen.getByTestId("city-search");
 //     const suggestionListItems = within(citySearch).getAllByRole("listitem");
 
-     //console.log("allLocations:", allLocations);
-    //console.log("suggestionListItems:", suggestionListItems);
+//console.log("allLocations:", allLocations);
+//console.log("suggestionListItems:", suggestionListItems);
 
 //     expect(suggestionListItems.length).toBe(allLocations.length + 1);
 //   });

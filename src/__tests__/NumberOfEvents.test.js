@@ -32,19 +32,19 @@ describe("<NumberOfEvents /> component", () => {
       render(<App />);
       const numberOfEvents = screen.getByTestId("number-of-events");
       const numberTextbox = within(numberOfEvents).getByRole("textbox");
-        //const numberTextbox = screen.queryByPlaceholderText("Enter a number");
-        //await userEvent.type(numberTextbox,currentNumberOfEvents.toString());
-        await userEvent.type(numberTextbox,"{backspace}{backspace}10");
-        
-        await screen.findAllByRole("listitem")
-        const EventListItems = screen.getAllByRole("listitem");
-        expect(EventListItems.length).toBe(currentNumberOfEvents);
-      
+      //const numberTextbox = screen.queryByPlaceholderText("Enter a number");
+      //await userEvent.type(numberTextbox,currentNumberOfEvents.toString());
+      await userEvent.type(numberTextbox, "{backspace}{backspace}10");
+
+      await screen.findAllByRole("listitem");
+      const eventListItems = screen.queryAllByRole("listitem");
+      expect(eventListItems.length).toBe(currentNumberOfEvents);
+
       // await waitFor(() => {
       //   const eventList = screen.queryByTestId("event-list");
       //   const EventListItems = within(eventList).queryAllByRole("listitem");
       //   expect(EventListItems.length).toBeGreaterThan(0);
-      });
     });
   });
+});
 //});
