@@ -2,7 +2,8 @@ import { loadFeature, defineFeature } from "jest-cucumber";
 import { render, screen, within, fireEvent } from "@testing-library/react";
 // import { getEvents } from "../api";
 import userEvent from "@testing-library/user-event";
-//import Event from "../components/Event";
+import EventList from "../components/EventList";
+import Event from "../components/Event";
 import App from "../App";
 const feature = loadFeature("./src/features/showHideAnEventsDetails.feature");
 
@@ -30,9 +31,10 @@ defineFeature(feature, (test) => {
     then,
   }) => {
     given("the list of events has loaded,", () => {});
-    render(<App />);
+    render(<EventList events={[]} />);
 
-    when("the user clicks on show details", () => {
+    when("the user clicks on show details", async () => {
+        render(<Event  />);
       const showDetailsButton = screen.getByText("Show Details");
       fireEvent.click(showDetailsButton);
     });
