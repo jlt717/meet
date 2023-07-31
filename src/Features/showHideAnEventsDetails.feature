@@ -5,11 +5,11 @@ Feature: Show/hide an event’s details
   Then the event elements will collapse.
 
  Scenario: User can expand an event to see its details
-  Given the list of events has loaded, 
+  Given the list of events is displayed, 
   When the user clicks on show details
-  Then the event element will expand to show more details about the event.
+  Then the event details will be displayed.
 
  Scenario: User can collapse an event to hide its details
   Given the user has all the information they need about an event, 
-  When they click hide details 
-  Then the event element will collapse and hide the event details.
+  When the user clicks hide details 
+  Then the event details will be hidden.

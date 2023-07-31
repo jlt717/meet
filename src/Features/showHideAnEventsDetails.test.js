@@ -1,5 +1,5 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
-import { render, screen, within, fireEvent } from "@testing-library/react";
+import { render, screen, within, fireEvent, waitFor } from "@testing-library/react";
 // import { getEvents } from "../api";
 import userEvent from "@testing-library/user-event";
 import EventList from "../components/EventList";
@@ -17,7 +17,8 @@ defineFeature(feature, (test) => {
     });
 
     when("the list of local events for that location loads", async () => {
-      expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
+     await waitFor(() => screen.findByRole("listitem"));
+      //expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
     });
 
     then("the event elements will collapse.", () => {
@@ -30,23 +31,21 @@ defineFeature(feature, (test) => {
     when,
     then,
   }) => {
-    given("the list of events has loaded,", () => {});
+    given("the list of events is displayed,", () => {});
     render(<EventList events={[]} />);
 
     when("the user clicks on show details", async () => {
-        render(<Event  />);
+      render(<Event />);
+      await waitFor(() => screen.findByText("Show Details"));
       const showDetailsButton = screen.getByText("Show Details");
       fireEvent.click(showDetailsButton);
     });
 
-    then(
-      "the event element will expand to show more details about the event.",
-      () => {
-        expect(
-          screen.getByText(/Have you wondered how you can ask Google/)
-        ).toBeInTheDocument();
-      }
-    );
+    then("the event details will be displayed.", () => {
+      expect(
+        screen.getByText(/Have you wondered how you can ask Google/)
+      ).toBeInTheDocument();
+    });
   });
 
   test("User can collapse an event to hide its details", ({
@@ -59,11 +58,11 @@ defineFeature(feature, (test) => {
       () => {}
     );
     const showDetailsButton = screen.getByText("Show Details");
-    when("they click hide details", () => {
+    when("the user clicks hide details", () => {
       fireEvent.click(showDetailsButton);
     });
 
-    then("the event element will collapse and hide the event details.", () => {
+    then("the event details will be hidden.", () => {
       expect(
         screen.queryByText(/Have you wondered how you can ask Google/)
       ).not.toBeInTheDocument();

@@ -2,6 +2,7 @@ import { loadFeature, defineFeature } from "jest-cucumber";
 import React from "react";
 import { render, screen, within, waitFor } from "@testing-library/react";
 // import { getEvents } from "../api";
+import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import NumberOfEvents from "../components/NumberOfEvents";
 import App from "../App";
@@ -61,7 +62,9 @@ test("User can change the number of events they want to see", ({
     const numberTextBox = screen.getByPlaceholderText("Enter a number");
     await userEvent.type(numberTextBox, "10");
     //expect(handleEventNumberChange).toHaveBeenCalled();
-    expect(eventNumber).toBe(10);
+    await waitFor(() => {
+      expect(eventNumber).toBe(10);
+    });
   });
 
   then(
@@ -77,4 +80,3 @@ test("User can change the number of events they want to see", ({
     }
   );
 });
-//});
