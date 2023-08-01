@@ -1,5 +1,11 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
-import { render, screen, within, fireEvent, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  within,
+  fireEvent,
+  waitFor,
+} from "@testing-library/react";
 // import { getEvents } from "../api";
 import userEvent from "@testing-library/user-event";
 import EventList from "../components/EventList";
@@ -18,8 +24,8 @@ defineFeature(feature, (test) => {
 
     when("the list of local events for that location loads", async () => {
      await waitFor(() => screen.findByRole("listitem"));
-      //expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
-    });
+expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
+});
 
     then("the event elements will collapse.", () => {
       expect(screen.getByText("Show Details")).toBeInTheDocument();

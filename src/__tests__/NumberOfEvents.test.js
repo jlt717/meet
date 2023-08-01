@@ -28,17 +28,17 @@ describe("<NumberOfEvents /> component", () => {
   });
   describe("<NumberOfEvents /> integration", () => {
     test("renders a specific number of events when the app is rendered", async () => {
-      const currentNumberOfEvents = 32;
+      //const currentNumberOfEvents = 32;
       render(<App />);
       const numberOfEvents = screen.getByTestId("number-of-events");
       const numberTextbox = within(numberOfEvents).getByRole("textbox");
       //const numberTextbox = screen.queryByPlaceholderText("Enter a number");
       //await userEvent.type(numberTextbox,currentNumberOfEvents.toString());
-      await userEvent.type(numberTextbox, "{backspace}{backspace}10");
+      await userEvent.type(numberTextbox, "10");
 
       await screen.findAllByRole("listitem");
       const eventListItems = screen.queryAllByRole("listitem");
-      expect(eventListItems.length).toBe(currentNumberOfEvents);
+      expect(eventListItems.length).toBe(10);
 
       // await waitFor(() => {
       //   const eventList = screen.queryByTestId("event-list");

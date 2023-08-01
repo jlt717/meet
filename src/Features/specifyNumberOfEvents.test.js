@@ -1,5 +1,5 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
-import React from "react";
+import React, { useState } from "react";
 import { render, screen, within, waitFor } from "@testing-library/react";
 // import { getEvents } from "../api";
 import "@testing-library/jest-dom/extend-expect";
@@ -33,50 +33,52 @@ defineFeature(feature, (test) => {
       const numberTextBox = screen.getByPlaceholderText("Enter a number");
       expect(numberTextBox).toHaveValue(32);
     });
-  });
-});
+    //});
+    //});
 
-test("User can change the number of events they want to see", ({
-  given,
-  when,
-  then,
-}) => {
-  //let eventNumber = 32;
-  const [eventNumber, setEventNumber] = React.useState(32);
-  given(
-    "the user wants to change the number of events shown at a time,",
-    () => {}
-  );
+    test("User can change the number of events they want to see", ({
+      given,
+      when,
+      then,
+    }) => {
+      //let eventNumber = 32;
+      const [eventNumber, setEventNumber] = useState(32);
+      given(
+        "the user wants to change the number of events shown at a time,",
+        () => {}
+      );
 
-  when("they enter a new number in the input field", async () => {
-    //const handleEventNumberChange = jest.fn();
-    const handleEventNumberChange = (newNumber) => {
-      setEventNumber(newNumber);
-    };
-    render(
-      <NumberOfEvents
-        eventNumber={eventNumber}
-        onEventNumberChange={handleEventNumberChange}
-      />
-    );
-    const numberTextBox = screen.getByPlaceholderText("Enter a number");
-    await userEvent.type(numberTextBox, "10");
-    //expect(handleEventNumberChange).toHaveBeenCalled();
-    await waitFor(() => {
-      expect(eventNumber).toBe(10);
+      when("they enter a new number in the input field", async () => {
+        //const handleEventNumberChange = jest.fn();
+        const handleEventNumberChange = (newNumber) => {
+          setEventNumber(newNumber);
+        };
+        render(
+          <NumberOfEvents
+            eventNumber={eventNumber}
+            onEventNumberChange={handleEventNumberChange}
+          />
+        );
+        const numberTextBox = screen.getByPlaceholderText("Enter a number");
+        await userEvent.type(numberTextBox, "10");
+        //expect(handleEventNumberChange).toHaveBeenCalled();
+        await waitFor(() => {
+          expect(eventNumber).toBe(10);
+        });
+      });
+
+      then(
+        "the event list will update to display the specified number of events.",
+        async () => {
+          const numberTextbox = screen.getByPlaceholderText("Enter a number");
+          const updatedEventNumber = parseInt(numberTextbox.value);
+
+          await waitFor(() => {
+            const eventListItems = screen.queryAllByRole("listitem");
+            expect(eventListItems.length).toBe(updatedEventNumber);
+          });
+        }
+      );
     });
   });
-
-  then(
-    "the event list will update to display the specified number of events.",
-    async () => {
-      const numberTextbox = screen.getByPlaceholderText("Enter a number");
-      const updatedEventNumber = parseInt(numberTextbox.value);
-
-      await waitFor(() => {
-        const eventListItems = screen.queryAllByRole("listitem");
-        expect(eventListItems.length).toBe(updatedEventNumber);
-      });
-    }
-  );
 });
