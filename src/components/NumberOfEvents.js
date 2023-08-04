@@ -8,13 +8,16 @@ const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
     if (!isNaN(numberValue)) {
       onEventNumberChange(numberValue);
     } else {
-      onEventNumberChange(0);
+      onEventNumberChange(32);
     }
   };
 
   return (
     <div data-testid="number-of-events">
       <input
+        onFocus={() => {
+          onEventNumberChange("");
+        }}
         type="text"
         className="textbox"
         placeholder="Enter a number"

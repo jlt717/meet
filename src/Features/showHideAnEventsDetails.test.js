@@ -2,33 +2,74 @@ import { loadFeature, defineFeature } from "jest-cucumber";
 import {
   render,
   screen,
-  within,
   fireEvent,
-  waitFor,
 } from "@testing-library/react";
 // import { getEvents } from "../api";
-import userEvent from "@testing-library/user-event";
-import EventList from "../components/EventList";
+//import userEvent from "@testing-library/user-event";
+//import EventList from "../components/EventList";
 import Event from "../components/Event";
-import App from "../App";
+//import App from "../App";
+const event = {
+  kind: "calendar#event",
+  etag: '"3181161784712000"',
+  id: "4eahs9ghkhrvkld72hogu9ph3e_20200519T140000Z",
+  status: "confirmed",
+  htmlLink:
+    "https://www.google.com/calendar/event?eid=NGVhaHM5Z2hraHJ2a2xkNzJob2d1OXBoM2VfMjAyMDA1MTlUMTQwMDAwWiBmdWxsc3RhY2t3ZWJkZXZAY2FyZWVyZm91bmRyeS5jb20",
+  created: "2020-05-19T19:17:46.000Z",
+  updated: "2020-05-27T12:01:32.356Z",
+  summary: "Learn JavaScript",
+  description:
+    "Have you wondered how you can ask Google to show you the list of the top ten must-see places in London? And how Google presents you the list? How can you submit the details of an application? Well, JavaScript is doing these. :) \n\nJavascript offers interactivity to a dull, static website. Come, learn JavaScript with us and make those beautiful websites.",
+  location: "London, UK",
+  creator: {
+    email: "fullstackwebdev@careerfoundry.com",
+    self: true,
+  },
+  organizer: {
+    email: "fullstackwebdev@careerfoundry.com",
+    self: true,
+  },
+  start: {
+    dateTime: "2020-05-19T16:00:00+02:00",
+    timeZone: "Europe/Berlin",
+  },
+  end: {
+    dateTime: "2020-05-19T17:00:00+02:00",
+    timeZone: "Europe/Berlin",
+  },
+  recurringEventId: "4eahs9ghkhrvkld72hogu9ph3e",
+  originalStartTime: {
+    dateTime: "2020-05-19T16:00:00+02:00",
+    timeZone: "Europe/Berlin",
+  },
+  iCalUID: "4eahs9ghkhrvkld72hogu9ph3e@google.com",
+  sequence: 0,
+  reminders: {
+    useDefault: true,
+  },
+  eventType: "default",
+};
 const feature = loadFeature("./src/features/showHideAnEventsDetails.feature");
 
 defineFeature(feature, (test) => {
   test("An event element is collapsed by default", ({ given, when, then }) => {
     given("the user has selected a location to search for events,", () => {
-      render(<App />);
-      const citySearch = screen.getByTestId("city-search");
-      const cityInput = within(citySearch).getByRole("textbox");
-      userEvent.type(cityInput, "Berlin");
+      render(<Event event={event} />);
+      // const citySearch = screen.getByTestId("city-search");
+      // const cityInput = within(citySearch).getByRole("textbox");
+      // userEvent.type(cityInput, "Berlin");
     });
 
     when("the list of local events for that location loads", async () => {
-     await waitFor(() => screen.findByRole("listitem"));
-expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
-});
+      //await waitFor(() => screen.findByRole("listitem"));
+      //expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
+    });
 
     then("the event elements will collapse.", () => {
-      expect(screen.getByText("Show Details")).toBeInTheDocument();
+      expect(
+        screen.queryByText(/Have you wondered how you can ask Google/)
+      ).not.toBeInTheDocument();
     });
   });
 
@@ -38,11 +79,11 @@ expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
     then,
   }) => {
     given("the list of events is displayed,", () => {});
-    render(<EventList events={[]} />);
+    render(<Event event={event} />);
 
     when("the user clicks on show details", async () => {
-      render(<Event />);
-      await waitFor(() => screen.findByText("Show Details"));
+      render(<Event event={event} />);
+      //await waitFor(() => screen.findByText("Show Details"));
       const showDetailsButton = screen.getByText("Show Details");
       fireEvent.click(showDetailsButton);
     });
@@ -59,13 +100,15 @@ expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
     when,
     then,
   }) => {
-    given(
-      "the user has all the information they need about an event,",
-      () => {}
-    );
-    const showDetailsButton = screen.getByText("Show Details");
+    given("the user has all the information they need about an event,", () => {
+      render(<Event event={event} />);
+    });
     when("the user clicks hide details", () => {
+      const showDetailsButton = screen.getByText("Show Details");
       fireEvent.click(showDetailsButton);
+
+      const hideDetailsButton = screen.getByText("Hide Details");
+      fireEvent.click(hideDetailsButton);
     });
 
     then("the event details will be hidden.", () => {

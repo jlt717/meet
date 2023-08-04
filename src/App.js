@@ -6,7 +6,7 @@ import NumberOfEvents from "./components/NumberOfEvents";
 import "./App.css";
 
 const App = () => {
-  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCity, setSelectedCity] = useState("See all cities");
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [allLocations, setAllLocations] = useState([]);
@@ -24,76 +24,26 @@ const App = () => {
     };
     fetchData();
   }, []);
-  // useEffect(() => {
-  //   const getAllEvents = async () => {
-  //     const eventList = await getEvents();
-  //     setEvents(eventList.slice(0, eventNumber));
-  //     setAllLocations(extractLocations(eventList));
-  //   };
 
-  //   getAllEvents();
-  // }, [eventNumber]);
-
-  const handleCitySelected = (city) => {
+  const handleCitySelected = (city, numberOfEvents) => {
     setSelectedCity(city);
-
+    const filteredEvents = events.filter((event) => event.location === city);
+    let sliced = [];
     if (city === "See all cities") {
-      setFilteredEvents([]);
-      setEventNumber(32);
+      sliced = events.slice(0, numberOfEvents);
     } else {
-      const filteredEvents = events.filter((event) => event.location === city);
       //use eventNumber if present to limit number
-      setFilteredEvents(filteredEvents);
+      sliced = filteredEvents.slice(0, numberOfEvents);
     }
-  };
-  //     const allEvents = events.slice(0, eventNumber);
-  //     setEvents(allEvents);
-  //   } else {
-  //     const filteredEvents = events.filter((event) => event.location === city);
-  //     setEvents(filteredEvents);
-  //   }
-  // };
-
-  //   if (city === "See all cities") {
-  //     setEvents(events.slice(0, eventNumber));
-  //   } else {
-  //     const filteredEvents = events.filter((event) => event.location === city);
-  //     setEvents(filteredEvents);
-  //   }
-  // };
-
-  const handleEventNumberChange = (value) => {
-    setEventNumber(value);
+    setFilteredEvents(sliced);
   };
 
-  // useEffect(() => {
-  //   const getAllEvents = async () => {
-  //        const eventList = await getEvents();
-  //     let filteredEvents = eventList;
-  //     if (selectedCity !== "See all cities") {
-  //       filteredEvents = eventList.filter(
-  //         (event) => event.location === selectedCity
-  //       );
-  //     }
-  //     setEvents(filteredEvents);
-  //     setLocations(extractLocations(eventList));
-  //   };
+  function onEventNumberChange(number) {
+    console.log("onEventNumberChange:", number);
+    setEventNumber(number);
+    handleCitySelected(selectedCity, number);
+  }
 
-  //   getAllEvents();
-  // }, [selectedCity]);
-  // }
-  //     const filteredEvents =
-  //       selectedCity === "See all cities"
-  //         ? eventList
-  //         : eventList.filter((event) => event.location === selectedCity);
-  //     setEvents(filteredEvents.slice(0, eventNumber));
-  //     setLocations(extractLocations(eventList));
-  //   };
-  //   getAllEvents();
-  // }, [selectedCity, eventNumber]);
-  // const handleEventNumberChange = (value) => {
-  //   setEventNumber(value);
-  // };
   return (
     <div className="App" style={{ backgroundColor: "#f04908" }}>
       <CitySearch
@@ -102,12 +52,9 @@ const App = () => {
       />
       <NumberOfEvents
         eventNumber={eventNumber}
-        onEventNumberChange={handleEventNumberChange}
+        onEventNumberChange={onEventNumberChange}
       />
       <EventList events={filteredEvents.length > 0 ? filteredEvents : events} />
-      {/* events={events}
-        selectedCity={selectedCity}
-      /> */}
     </div>
   );
 };
