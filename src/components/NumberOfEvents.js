@@ -2,7 +2,11 @@
 
 import React from "react";
 
-const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
+const NumberOfEvents = ({
+  eventNumber,
+  onEventNumberChange,
+  setErrorAlert,
+}) => {
   const handleInputChanged = (value) => {
     const numberValue = parseInt(value); // Convert the input value to a number
     if (!isNaN(numberValue)) {
@@ -10,6 +14,13 @@ const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
     } else {
       onEventNumberChange(32);
     }
+    let errorText;
+    if (isNaN(value) || value <= 0) {
+      errorText = "You must enter a positive number to continue.";
+    } else {
+      errorText = "";
+    }
+    setErrorAlert(errorText);
   };
 
   return (

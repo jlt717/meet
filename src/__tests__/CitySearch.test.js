@@ -106,7 +106,7 @@ describe("<CitySearch /> component", () => {
   });
 
   test("renders a list of suggestions when user types into city textbox", async () => {
-    render(<CitySearch allLocations={allLocations} />);
+    render(<CitySearch allLocations={allLocations} setInfoAlert={() => { }}/>);
     const cityTextBox = screen.getByPlaceholderText("Search for a city");
     await userEvent.type(cityTextBox, "a");
     const suggestionItem = screen.queryAllByRole("listitem");
@@ -116,7 +116,7 @@ describe("<CitySearch /> component", () => {
   });
 });
 test("updates list of suggestions correctly when user types in city textbox", async () => {
-  render(<CitySearch allLocations={allLocations} />);
+  render(<CitySearch allLocations={allLocations} setInfoAlert={() => { }}/>);
 
   // user types "Berlin" in city textbox
   const cityTextBox = screen.queryByRole("textbox");
@@ -144,7 +144,7 @@ test("renders the suggestion text in the textbox upon clicking on the suggestion
   const allLocations = ["Berlin, Germany", "London, UK"]; // Provide a sample list of locations
 
   render(
-    <CitySearch allLocations={allLocations} setSelectedCity={setSelectedCity} />
+    <CitySearch allLocations={allLocations} setSelectedCity={setSelectedCity} setInfoAlert={() => { }}/>
   );
 
   const cityTextBox = screen.getByRole("textbox");

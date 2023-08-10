@@ -20,6 +20,7 @@ describe("<NumberOfEvents /> component", () => {
       <NumberOfEvents
         eventNumber={32}
         onEventNumberChange={handleEventNumberChange}
+        setErrorAlert={() => {}}
       />
     );
     const numberTextBox = screen.getByPlaceholderText("Enter a number");
