@@ -92,7 +92,7 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  background-color: #0fa3b1;
+  background-color: #00ccff;
 }
 .alerts-container {
   position: fixed;
@@ -100,4 +100,14 @@ input[type="number"] {
   left: 20px;
   width: 250px;
   z-index: 1000;
+}
+.charts-container {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .charts-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
