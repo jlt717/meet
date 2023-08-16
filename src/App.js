@@ -72,9 +72,9 @@ const App = () => {
         onEventNumberChange={onEventNumberChange}
         setErrorAlert={setErrorAlert}
       />
-      <div className="charts-container"style={{ display: "flex" }}>
-        <CityEventsChart allLocations={allLocations} events={events} />
+      <div className="charts-container" style={{ display: "flex" }}>
         <EventGenresChart events={events} />
+        <CityEventsChart allLocations={allLocations} events={events} />
       </div>
       <EventList events={filteredEvents.length > 0 ? filteredEvents : events} />
     </div>
