@@ -8,7 +8,7 @@
 ### Scenario 1: When user hasn't searched for a city, show upcoming events from all cities
 Given user hasn’t searched for any city, when the user opens the app then the user should see a list of all upcoming events.
 ### Scenario 2: User should see a list of suggestions when they search for a city
-Given the main page is open, when user starts typing in the city textbox
+Given the main page is open, when the user starts typing in the city textbox
 then the user should see a list of cities (suggestions) that match what they’ve typed.
 ### Scenario 3: User can select a city from the suggested list
 Given the user was typing “Berlin” in the city textbox and the list of suggested cities is showing, when the user selects a city (e.g., “Berlin, Germany”) from the list then their city should be changed to that city (i.e., “Berlin, Germany”) and the user should receive a list of upcoming events in that city.
@@ -18,16 +18,16 @@ Given the user was typing “Berlin” in the city textbox and the list of sugge
 ### Scenario 1: An event element is collapsed by default
 Given the user has selected a location to search for events, when the list of local events for that location loads then the event elements will collapse.
 ### Scenario 2: User can expand an event to see its details
-Given the list of events has loaded, when the user clicks on "show details" then the event element will expand to show more details about the event.
+Given the list of events is displayed, when the user clicks on show details then the event details will be displayed.
 ### Scenario 3: User can collapse an event to hide its details
-Given the user has all the information they need about an event, when they click "hide details" then the event element will collapse and hide the event details.
+Given the user has all the information they need about an event, when the user clicks hide details then the event details will be hidden.
 
 ## Feature 3: Specify number of events
 ### User Story: As a user, I would like to be able to specify the amount of events I want displayed so that I can see more or less events at once.
 ### Scenario 1: When user hasn’t specified a number, 32 is the default number
-Given the user has not specified a number of events to be listed at a time, when a list of events is returned to the user then it will return 32 events at a time.
+Given the user has not specified a number of events to be listed at a time, when the user views the event list then it will display 32 events at a time.
 ### Scenario 2: User can change the number of events they want to see
-Given the user is unhappy with the amount of events being shown at a time, when they adjust the number of events shown then the list length will either increase or decrease based on user preference.
+Given the user wants to change the number of events shown at a time, when they enter a new number in the input field then the event list will update to display the specified number of events.
 
 ## Feature 4: Use the app while offline
 ### User Story: As a user, I would like to be able to access this app without internet access so that I can still have access to events I've previously viewed.
