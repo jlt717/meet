@@ -3,7 +3,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([]);
-  const colors = ["#8F8CF2", "#EAA221", "#65B8BF", "#e642f5", "#1e7033"];
+  const colors = ["#1e3d59", "#ff6e40", "#ffc13b", "#1e847f", "#7a2048"];
   useEffect(() => {
     const genres = ["React", "JavaScript", "Node", "jQuery", "Angular"];
 
@@ -53,7 +53,7 @@ const EventGenresChart = ({ events }) => {
         <Pie
           data={data}
           dataKey="value"
-          fill="#ffd300"
+          fill="#ffc13b"
           labelLine={false}
           outerRadius={150}
           label={renderCustomizedLabel}

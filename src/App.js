@@ -56,12 +56,13 @@ const App = () => {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: "#f04908" }}>
+    <div className="App" style={{ backgroundColor: "#f5f0e1" }}>
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
+      <h1> Meet </h1>
       <CitySearch
         allLocations={allLocations}
         setSelectedCity={handleCitySelected}

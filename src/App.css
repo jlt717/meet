@@ -13,6 +13,11 @@ ul {
   list-style: none;
 }
 
+h1 {
+  font-size: 56px;
+  color: #1e3d59;
+}
+
 p {
   margin: 5px 0;
 }
@@ -92,7 +97,8 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  background-color: #00ccff;
+  color: #f5f0e1;
+  background-color: #1e3d59;
 }
 .alerts-container {
   position: fixed;

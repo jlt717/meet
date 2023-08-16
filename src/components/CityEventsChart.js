@@ -55,7 +55,7 @@ const CityEventsChart = ({ allLocations, events }) => {
           allowDecimals={false}
         />
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-        <Scatter name="Events by city" data={data} fill="#00ccff" />
+        <Scatter name="Events by city" data={data} fill="#ff6e40" />
       </ScatterChart>
     </ResponsiveContainer>
   );
