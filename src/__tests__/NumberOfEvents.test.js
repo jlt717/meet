@@ -29,7 +29,6 @@ describe("<NumberOfEvents /> component", () => {
   });
   describe("<NumberOfEvents /> integration", () => {
     test("renders a specific number of events when the app is rendered", async () => {
-      //const currentNumberOfEvents = 32;
       render(<App />);
       const numberOfEvents = screen.getByTestId("number-of-events");
       const numberTextbox = within(numberOfEvents).getByRole("textbox");
@@ -40,4 +39,3 @@ describe("<NumberOfEvents /> component", () => {
     });
   });
 });
-//});

@@ -18,10 +18,7 @@ defineFeature(feature, (test) => {
     });
 
     then("the user should see a list of all upcoming events.", async () => {
-      //const eventListItems = await within(eventList).findAllByRole("listitem");
-      //await waitFor(() => {
       const eventList = screen.queryByTestId("event-list");
-      //const EventListItems = within(eventList).queryAllByRole("listitem");
       expect(eventList).toBeInTheDocument();
     });
   });
@@ -36,7 +33,6 @@ defineFeature(feature, (test) => {
     });
     let cityTextBox;
     when("the user starts typing in the city textbox", async () => {
-      //await waitFor(() => {
       cityTextBox = await screen.findByPlaceholderText("Search for a city");
       expect(cityTextBox).toBeInTheDocument();
       await userEvent.type(cityTextBox, "Berlin");
@@ -70,9 +66,6 @@ defineFeature(feature, (test) => {
       await userEvent.type(cityTextBox, "Berlin");
     });
     and("the list of suggested cities is showing,", async () => {
-      //suggestionList = await screen.findByTestId("suggestions");
-      //suggestionListItems = await within(suggestionList).findAllByRole("lisitem");
-      //expect(suggestionListItems).toHaveLength(2);
     });
 
     when(

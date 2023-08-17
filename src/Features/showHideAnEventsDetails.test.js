@@ -4,11 +4,7 @@ import {
   screen,
   fireEvent,
 } from "@testing-library/react";
-// import { getEvents } from "../api";
-//import userEvent from "@testing-library/user-event";
-//import EventList from "../components/EventList";
 import Event from "../components/Event";
-//import App from "../App";
 const event = {
   kind: "calendar#event",
   etag: '"3181161784712000"',
@@ -56,14 +52,9 @@ defineFeature(feature, (test) => {
   test("An event element is collapsed by default", ({ given, when, then }) => {
     given("the user has selected a location to search for events,", () => {
       render(<Event event={event} />);
-      // const citySearch = screen.getByTestId("city-search");
-      // const cityInput = within(citySearch).getByRole("textbox");
-      // userEvent.type(cityInput, "Berlin");
     });
 
     when("the list of local events for that location loads", async () => {
-      //await waitFor(() => screen.findByRole("listitem"));
-      //expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
     });
 
     then("the event elements will collapse.", () => {
@@ -83,7 +74,6 @@ defineFeature(feature, (test) => {
 
     when("the user clicks on show details", async () => {
       render(<Event event={event} />);
-      //await waitFor(() => screen.findByText("Show Details"));
       const showDetailsButton = screen.getByText("Show Details");
       fireEvent.click(showDetailsButton);
     });

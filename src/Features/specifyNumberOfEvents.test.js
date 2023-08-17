@@ -1,10 +1,8 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
 import React from "react";
 import { render, screen, within, waitFor } from "@testing-library/react";
-// import { getEvents } from "../api";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
-//import NumberOfEvents from "../components/NumberOfEvents";
 import App from "../App";
 const feature = loadFeature("./src/features/specifyNumberOfEvents.feature");
 
@@ -32,7 +30,6 @@ defineFeature(feature, (test) => {
     then(/^it will display (\d+) events at a time.$/, (arg0) => {
       const numberTextBox = screen.getByPlaceholderText("Enter a number");
       expect(numberTextBox).toHaveValue("32");
-      //expect(parseInt(numberTextBox.value)).toBe(32);
     });
 
     test("User can change the number of events they want to see", ({
@@ -55,9 +52,6 @@ defineFeature(feature, (test) => {
       then(
         "the event list will update to display the specified number of events.",
         async () => {
-          //const numberTextbox = screen.getByPlaceholderText("Enter a number");
-          //const updatedEventNumber = parseInt(numberTextbox.value);
-
           await waitFor(() => {
             const eventListItems = screen.queryAllByRole("listitem");
             expect(eventListItems.length).toBe(10);
