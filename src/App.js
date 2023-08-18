@@ -31,7 +31,7 @@ const App = () => {
     if (navigator.onLine) {
       setWarningAlert("");
     } else {
-      setWarningAlert("Its looks like you're offline.");
+      setWarningAlert("It looks like you're offline.");
     }
     fetchData();
   }, []);
@@ -62,7 +62,15 @@ const App = () => {
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
-      <h1> Meet </h1>
+
+      <img
+        src={process.env.PUBLIC_URL + "/meet-app-144.png"}
+        alt="Meet App"
+        style={{ paddingTop: "0px", marginBottom: "0px" }}
+      />
+      <h1 style={{ textAlign: "center", marginTop: "0px", color: "#1e3d59" }}>
+        Meet
+      </h1>
       <CitySearch
         allLocations={allLocations}
         setSelectedCity={handleCitySelected}

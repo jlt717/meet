@@ -8,7 +8,7 @@ const Event = ({ event }) => {
   return (
     <li>
       <div className="event">
-        <h2>{event.summary}</h2>
+        <h2 style={{ color: "#1e847f" }}>{event.summary}</h2>
         <div className="location">{event.location} </div>
         <div className="dateTime">{event.start.dateTime}</div>
         {showDetails && <div className="description">{event.description}</div>}

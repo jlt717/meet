@@ -17,9 +17,10 @@ const CitySearch = ({ allLocations, setSelectedCity, setInfoAlert }) => {
     setSuggestions(filteredLocations);
     let infoText;
     if (filteredLocations.length === 0) {
-      infoText = "We cannot find the city you are looking for. Please try another city"
+      infoText =
+        "We cannot find the city you are looking for. Please try another city.";
     } else {
-      infoText = ""
+      infoText = "";
     }
     setInfoAlert(infoText);
   };
@@ -31,10 +32,10 @@ const CitySearch = ({ allLocations, setSelectedCity, setInfoAlert }) => {
     setQuery(value);
     setShowSuggestions(false); // to hide the list
     setSelectedCity(value);
-    setInfoAlert("")
+    setInfoAlert("");
   };
   return (
-    <div data-testid="city-search">
+    <div data-testid="city-search" id="city-search">
       <input
         type="text"
         className="city"
