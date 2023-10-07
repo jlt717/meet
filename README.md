@@ -1,6 +1,9 @@
 # Meet App
 <br>
 
+## Screenshots
+<br>
+
 <img src="https://github.com/jlt717/meet/assets/128320420/35fc815f-b503-4622-bf96-f440941a46ae" padding-right="25px" width="450">
     
    
@@ -58,6 +61,37 @@ Given a specific city has not been selected to search for events, when the user 
 ### ● Jest
 ### ● Puppeteer
 ### ● AWS
+<br>
+
+## Dependencies
+```
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "atatus-spa": "^4.5.0",
+    "nprogress": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.7.3",
+    "web-vitals": "^2.1.4",
+    "workbox-background-sync": "^6.6.0",
+    "workbox-broadcast-update": "^6.6.0",
+    "workbox-cacheable-response": "^6.6.0",
+    "workbox-core": "^6.6.0",
+    "workbox-expiration": "^6.6.0",
+    "workbox-google-analytics": "^6.6.0",
+    "workbox-navigation-preload": "^6.6.0",
+    "workbox-precaching": "^6.6.0",
+    "workbox-range-requests": "^6.6.0",
+    "workbox-routing": "^6.6.0",
+    "workbox-strategies": "^6.6.0",
+    "workbox-streams": "^6.6.0"
+```
+<br>
+
+## Live Site
+[Meet](https://jlt717.github.io/meet/)
 <br>
 
 ## Author
